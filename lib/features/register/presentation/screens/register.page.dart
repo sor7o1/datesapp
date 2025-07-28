@@ -1,4 +1,6 @@
+import 'package:datesapp/features/home/presentation/screens/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegistroHome extends StatefulWidget {
   const RegistroHome({super.key});
@@ -18,7 +20,7 @@ class _RegistroHomeState extends State<RegistroHome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-                            const SizedBox(height: 79),
+              const SizedBox(height: 79),
               const Icon(
                 Icons.app_registration,
                 size: 72,
@@ -90,8 +92,8 @@ class _RegistroHomeState extends State<RegistroHome> {
               // ¿Ya tienes cuenta?
               TextButton(
                 onPressed: () {
-                  // Podrías ir a login si lo deseas
-                  Navigator.pop(context);
+                  final homeBloc = context.read<HomeBloc>();
+                  homeBloc.add(ChangePage(0));
                 },
                 child: const Text('¿Ya tienes cuenta? Inicia sesión'),
               ),
